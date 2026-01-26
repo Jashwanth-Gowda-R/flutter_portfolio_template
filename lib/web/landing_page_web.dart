@@ -24,6 +24,7 @@ class _LandingPageWebState extends State<LandingPageWeb> {
   @override
   Widget build(BuildContext context) {
     var heightDevice = MediaQuery.of(context).size.height;
+    var widthDevice = MediaQuery.of(context).size.width;
     return Scaffold(
       backgroundColor: Colors.white,
       drawer: Drawer(backgroundColor: Colors.white),
@@ -125,7 +126,7 @@ class _LandingPageWebState extends State<LandingPageWeb> {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Image.asset('assets/web.jpg', height: heightDevice / 1.7),
+                Image.asset('assets/web.jpg', height: widthDevice / 1.9),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -182,17 +183,21 @@ class _LandingPageWebState extends State<LandingPageWeb> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    WhatIDO(
+                    AnimatedCard(
                       text: 'Web Development (Flutter)',
                       imagePath: 'assets/webL.png',
+
+                      reverse: false,
                     ),
-                    WhatIDO(
+                    AnimatedCard(
                       text: 'Mobile App Development (Flutter)',
                       imagePath: 'assets/app.png',
+                      reverse: true,
                     ),
-                    WhatIDO(
+                    AnimatedCard(
                       text: 'Backend Development(Firebase)',
                       imagePath: 'assets/firebase.png',
+                      reverse: false,
                     ),
                   ],
                 ),
@@ -325,4 +330,3 @@ class _LandingPageWebState extends State<LandingPageWeb> {
     );
   }
 }
-

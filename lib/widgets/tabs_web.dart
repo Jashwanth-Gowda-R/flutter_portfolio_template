@@ -17,7 +17,7 @@ class _TabsWebState extends State<TabsWeb> {
       child: AnimatedDefaultTextStyle(
         curve: Curves.fastOutSlowIn,
         style: isSelected
-            ? GoogleFonts.oswald(
+            ? GoogleFonts.roboto(
                 color: Colors.transparent,
                 fontSize: 25,
                 fontWeight: FontWeight.bold,
@@ -27,7 +27,7 @@ class _TabsWebState extends State<TabsWeb> {
                 decorationColor: Colors.tealAccent,
                 shadows: [Shadow(color: Colors.black, offset: Offset(0, -6))],
               )
-            : GoogleFonts.oswald(
+            : GoogleFonts.roboto(
                 color: Colors.black,
                 fontSize: 23,
                 // fontWeight: FontWeight.bold,
