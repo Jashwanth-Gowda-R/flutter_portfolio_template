@@ -1,11 +1,13 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:my_portfolio_app/widgets/my_textfield.dart';
 
 import 'package:my_portfolio_app/widgets/sansbold.dart';
 import 'package:my_portfolio_app/widgets/skills.dart';
 import 'package:my_portfolio_app/widgets/tabs_web.dart';
 import 'package:my_portfolio_app/widgets/whatido.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class LandingPageWeb extends StatefulWidget {
   const LandingPageWeb({super.key});
@@ -27,7 +29,45 @@ class _LandingPageWebState extends State<LandingPageWeb> {
     var widthDevice = MediaQuery.of(context).size.width;
     return Scaffold(
       backgroundColor: Colors.white,
-      drawer: Drawer(backgroundColor: Colors.white),
+      drawer: Drawer(
+        backgroundColor: Colors.white,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            CircleAvatar(
+              radius: 72,
+              backgroundColor: Colors.tealAccent,
+              child: CircleAvatar(
+                radius: 70,
+                backgroundColor: Colors.white,
+                backgroundImage: AssetImage('picture.jpeg'),
+              ),
+            ),
+            SizedBox(height: 20),
+            Sansbold(text: 'Jashwanth Gowda R', size: 30),
+            SizedBox(height: 20),
+            // social media icons svg files for insta github twitter
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                // svg images
+                GestureDetector(
+                  child: SvgPicture.asset('assets/github.svg', height: 30),
+                  onTap: () async {
+                    await launchUrl(
+                      Uri.parse('https://github.com/Jashwanth-Gowda-R'),
+                    );
+                  },
+                ),
+                SizedBox(width: 20),
+                SvgPicture.asset('assets/instagram.svg', height: 30),
+                SizedBox(width: 20),
+                SvgPicture.asset('assets/twitter.svg', height: 30),
+              ],
+            ),
+          ],
+        ),
+      ),
       appBar: AppBar(
         title: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -56,6 +96,7 @@ class _LandingPageWebState extends State<LandingPageWeb> {
             height: heightDevice - 56,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Column(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -79,9 +120,13 @@ class _LandingPageWebState extends State<LandingPageWeb> {
                     SizedBox(height: 15),
                     Sansbold(text: 'Jashwanth Gowda R', size: 55),
 
+                    // Sans(
+                    //   text:
+                    //       'Flutter Developer | Android Developer | Web Developer | iOS Developer ',
+                    //   size: 30,
+                    // ),
                     Sans(
-                      text:
-                          'Flutter Developer | Android Developer | Web Developer | iOS Developer ',
+                      text: 'Flutter Developer | Frontend Software Engineer',
                       size: 30,
                     ),
                     SizedBox(height: 15),

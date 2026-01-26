@@ -29,7 +29,7 @@ class _TabsWebState extends State<TabsWeb> {
               )
             : GoogleFonts.roboto(
                 color: Colors.black,
-                fontSize: 23,
+                fontSize: 20,
                 // fontWeight: FontWeight.bold,
                 // letterSpacing: 1,
               ),
