@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:my_portfolio_app/widgets/sansbold.dart';
 import 'package:my_portfolio_app/widgets/skills.dart';
 import 'package:my_portfolio_app/widgets/tabs_web.dart';
+import 'package:my_portfolio_app/widgets/whatido.dart';
 
 class LandingPageWeb extends StatefulWidget {
   const LandingPageWeb({super.key});
@@ -155,6 +156,33 @@ class _LandingPageWebState extends State<LandingPageWeb> {
                         SizedBox(width: 10),
                         Skills(text: 'Web'),
                       ],
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+
+          // 3rd section
+          SizedBox(
+            height: heightDevice / 1.3,
+            child: Column(
+              children: [
+                Sansbold(text: 'What I Do?', size: 40),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    WhatIDO(
+                      text: 'Web Development (Flutter)',
+                      imagePath: 'assets/webL.png',
+                    ),
+                    WhatIDO(
+                      text: 'Mobile App Development (Flutter)',
+                      imagePath: 'assets/app.png',
+                    ),
+                    WhatIDO(
+                      text: 'Backend Development(Firebase)',
+                      imagePath: 'assets/firebase.png',
                     ),
                   ],
                 ),
