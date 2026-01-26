@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:my_portfolio_app/widgets/sansbold.dart';
+import 'package:my_portfolio_app/widgets/skills.dart';
 import 'package:my_portfolio_app/widgets/tabs_web.dart';
 
 class LandingPageWeb extends StatefulWidget {
@@ -103,6 +103,60 @@ class _LandingPageWebState extends State<LandingPageWeb> {
                       backgroundImage: AssetImage('picture.jpeg'),
                     ),
                   ),
+                ),
+              ],
+            ),
+          ),
+
+          // 2nd section - about me
+          SizedBox(
+            height: heightDevice / 1.5,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Image.asset('assets/web.jpg', height: heightDevice / 1.7),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Sansbold(text: 'About Me', size: 30),
+                    SizedBox(height: 15),
+                    Sans(
+                      text:
+                          'I\'m Jashwanth Gowda R, A Flutter developer based in Bangalore, India.',
+                      size: 15,
+                    ),
+                    SizedBox(height: 5),
+
+                    Sans(
+                      text:
+                          'I have a Total 4+ years of experience in Software development and 3 years of experience in Flutter development.',
+                      size: 15,
+                    ),
+                    SizedBox(height: 5),
+                    Sans(
+                      text:
+                          'I have a passion for creating mobile and web applications using Flutter and Dart.',
+                      size: 15,
+                    ),
+                    SizedBox(height: 15),
+                    Row(
+                      children: [
+                        Skills(text: 'Flutter'),
+                        SizedBox(width: 10),
+                        Skills(text: 'Dart'),
+                        SizedBox(width: 10),
+                        Skills(text: 'Firebase'),
+                        SizedBox(width: 10),
+                        Skills(text: 'Android'),
+                        SizedBox(width: 10),
+                        Skills(text: 'IOS'),
+                        SizedBox(width: 10),
+                        Skills(text: 'Web'),
+                      ],
+                    ),
+                  ],
                 ),
               ],
             ),
