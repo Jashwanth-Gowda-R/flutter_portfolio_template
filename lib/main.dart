@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Portfolio App',
       home: LayoutBuilder(
         builder: (context, constraints) {
-          if (constraints.maxWidth > 700) {
+          if (constraints.maxWidth > 1200) {
             return const LandingPageWeb();
           } else {
             return const LandingPageMobile();
