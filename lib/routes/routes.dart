@@ -9,7 +9,7 @@ class Routes {
         return MaterialPageRoute(
           builder: (context) => LayoutBuilder(
             builder: (context, constraints) {
-              if (constraints.maxWidth > 950) {
+              if (constraints.maxWidth > 1050) {
                 return const LandingPageWeb();
               } else {
                 return const LandingPageMobile();
