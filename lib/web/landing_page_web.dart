@@ -10,19 +10,34 @@ import 'package:my_portfolio_app/widgets/whatido.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class LandingPageWeb extends StatefulWidget {
-  const LandingPageWeb({super.key});
+  final TextEditingController firstNameController;
+  final TextEditingController lastNameController;
+  final TextEditingController emailController;
+  final TextEditingController phoneController;
+  final TextEditingController messageController;
+  final GlobalKey<FormState>? formKey;
+
+  const LandingPageWeb({
+    super.key,
+    required this.firstNameController,
+    required this.lastNameController,
+    required this.emailController,
+    required this.phoneController,
+    required this.messageController,
+    this.formKey,
+  });
 
   @override
   State<LandingPageWeb> createState() => _LandingPageWebState();
 }
 
 class _LandingPageWebState extends State<LandingPageWeb> {
-  // Text editing controllers for managing input fields in forms
-  final TextEditingController _firstNameController = TextEditingController();
-  final TextEditingController _lastNameController = TextEditingController();
-  final TextEditingController _emailController = TextEditingController();
-  final TextEditingController _phoneController = TextEditingController();
-  final TextEditingController _messageController = TextEditingController();
+  // // Text editing controllers for managing input fields in forms
+  // final TextEditingController _firstNameController = TextEditingController();
+  // final TextEditingController _lastNameController = TextEditingController();
+  // final TextEditingController _emailController = TextEditingController();
+  // final TextEditingController _phoneController = TextEditingController();
+  // final TextEditingController _messageController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     var heightDevice = MediaQuery.of(context).size.height;
@@ -74,15 +89,15 @@ class _LandingPageWebState extends State<LandingPageWeb> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Spacer(flex: 3),
-            TabsWeb(title: 'Home'),
+            TabsWeb(title: 'Home', route: '/'),
             Spacer(),
-            TabsWeb(title: 'Works'),
+            TabsWeb(title: 'Works', route: '/works'),
             Spacer(),
-            TabsWeb(title: 'Blogs'),
+            TabsWeb(title: 'Blogs', route: '/blog'),
             Spacer(),
-            TabsWeb(title: 'About'),
+            TabsWeb(title: 'About', route: '/about'),
             Spacer(),
-            TabsWeb(title: 'Contact'),
+            TabsWeb(title: 'Contact', route: '/contact'),
             Spacer(),
           ],
         ),
@@ -263,7 +278,7 @@ class _LandingPageWebState extends State<LandingPageWeb> {
                   children: [
                     MyTextField(
                       text: 'First Name',
-                      controller: _firstNameController,
+                      controller: widget.firstNameController,
                       validator: (value) {
                         if (value == null || value.isEmpty) {
                           return 'First name is required';
@@ -279,7 +294,7 @@ class _LandingPageWebState extends State<LandingPageWeb> {
                     ),
                     MyTextField(
                       text: 'Last Name',
-                      controller: _lastNameController,
+                      controller: widget.lastNameController,
                       validator: (value) {
                         if (value == null || value.isEmpty) {
                           return 'Last name is required';
@@ -301,7 +316,7 @@ class _LandingPageWebState extends State<LandingPageWeb> {
                   children: [
                     MyTextField(
                       text: 'Email',
-                      controller: _emailController,
+                      controller: widget.emailController,
                       validator: (value) {
                         if (value == null || value.isEmpty) {
                           return 'Email is required';
@@ -316,7 +331,7 @@ class _LandingPageWebState extends State<LandingPageWeb> {
                     ),
                     MyTextField(
                       text: 'Phone Number',
-                      controller: _phoneController,
+                      controller: widget.phoneController,
                       validator: (value) {
                         if (value == null || value.isEmpty) {
                           return 'Phone number is required';
@@ -337,7 +352,7 @@ class _LandingPageWebState extends State<LandingPageWeb> {
                 const SizedBox(height: 20.0),
                 MyTextField(
                   text: 'Message',
-                  controller: _messageController,
+                  controller: widget.messageController,
                   minLines: 6,
                   width: 950,
                   validator: (value) {
