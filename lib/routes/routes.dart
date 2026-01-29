@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:my_portfolio_app/contact_responsive_page.dart';
 import 'package:my_portfolio_app/landing_responsive_screen.dart';
 import 'package:my_portfolio_app/mobile/about_me_mobile.dart';
 import 'package:my_portfolio_app/mobile/contact_me_mobile.dart';
@@ -56,17 +57,23 @@ class Routes {
           settings: settings,
         );
       // /contact
+      // case '/contact':
+      //   return MaterialPageRoute(
+      //     builder: (context) => LayoutBuilder(
+      //       builder: (context, constraints) {
+      //         if (constraints.maxWidth > 1050) {
+      //           return const ContactMeWeb();
+      //         } else {
+      //           return const ContactMeMobile();
+      //         }
+      //       },
+      //     ),
+      //     settings: settings,
+      //   );
       case '/contact':
         return MaterialPageRoute(
-          builder: (context) => LayoutBuilder(
-            builder: (context, constraints) {
-              if (constraints.maxWidth > 1050) {
-                return const ContactMeWeb();
-              } else {
-                return const ContactMeMobile();
-              }
-            },
-          ),
+          builder: (context) =>
+              const ContactPageResponsive(), // Use responsive widget
           settings: settings,
         );
       default:

@@ -59,7 +59,10 @@ class _LandingPageWebState extends State<LandingPageWeb> {
               ),
             ),
             SizedBox(height: 20),
-            Sansbold(text: 'Jashwanth Gowda R', size: 30),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Sansbold(text: 'Jashwanth Gowda R', size: 25),
+            ),
             SizedBox(height: 20),
             // social media icons svg files for insta github twitter
             Row(
