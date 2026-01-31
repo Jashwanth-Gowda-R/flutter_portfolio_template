@@ -42,6 +42,7 @@ class _LandingPageMobileState extends State<LandingPageMobile> {
       extendBodyBehindAppBar: true,
       backgroundColor: Colors.white,
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         backgroundColor: Colors.transparent,
         elevation: 0,
         iconTheme: IconThemeData(color: Colors.black, size: 35),
