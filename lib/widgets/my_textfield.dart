@@ -42,13 +42,17 @@ class MyTextField extends StatelessWidget {
                 decoration: InputDecoration(
                   focusedErrorBorder: OutlineInputBorder(
                     borderSide: BorderSide(color: Colors.red, width: 2),
-                    borderRadius: BorderRadius.all(Radius.circular(10)),
+                    borderRadius: BorderRadius.all(Radius.circular(15)),
                   ),
                   hintText: 'Enter Your $text',
                   helperStyle: GoogleFonts.poppins(
                     color: Colors.black,
                     fontSize: 15,
                     fontWeight: FontWeight.normal,
+                  ),
+                  errorBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.red, width: 2),
+                    borderRadius: BorderRadius.all(Radius.circular(10)),
                   ),
                   enabledBorder: OutlineInputBorder(
                     borderSide: BorderSide(color: Colors.teal, width: 1),

@@ -1,6 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:my_portfolio_app/firestore_db.dart';
 import 'package:my_portfolio_app/widgets/my_textfield.dart';
 
 import 'package:my_portfolio_app/widgets/sansbold.dart';
@@ -38,6 +39,9 @@ class _LandingPageWebState extends State<LandingPageWeb> {
   // final TextEditingController _emailController = TextEditingController();
   // final TextEditingController _phoneController = TextEditingController();
   // final TextEditingController _messageController = TextEditingController();
+  final _formKey = GlobalKey<FormState>();
+
+  AddDataToDB addData = AddDataToDB();
   @override
   Widget build(BuildContext context) {
     var heightDevice = MediaQuery.of(context).size.height;
@@ -271,121 +275,160 @@ class _LandingPageWebState extends State<LandingPageWeb> {
           // 4th section contact us
           SizedBox(
             height: heightDevice,
-            child: Column(
-              children: [
-                const SizedBox(height: 30.0),
-                Sansbold(text: 'Contact Me', size: 40),
-                const SizedBox(height: 20.0),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    MyTextField(
-                      text: 'First Name',
-                      controller: widget.firstNameController,
-                      validator: (value) {
-                        if (value == null || value.isEmpty) {
-                          return 'First name is required';
-                        }
-                        if (value.length < 2) {
-                          return 'First name must be at least 2 characters';
-                        }
-                        if (!RegExp(r'^[a-zA-Z\s]+$').hasMatch(value)) {
-                          return 'Only letters and spaces allowed';
-                        }
-                        return null;
-                      },
-                    ),
-                    MyTextField(
-                      text: 'Last Name',
-                      controller: widget.lastNameController,
-                      validator: (value) {
-                        if (value == null || value.isEmpty) {
-                          return 'Last name is required';
-                        }
-                        if (value.length < 2) {
-                          return 'Last name must be at least 2 characters';
-                        }
-                        if (!RegExp(r'^[a-zA-Z\s]+$').hasMatch(value)) {
-                          return 'Only letters and spaces allowed';
-                        }
-                        return null;
-                      },
-                    ),
-                  ],
-                ),
-                const SizedBox(height: 20.0),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    MyTextField(
-                      text: 'Email',
-                      controller: widget.emailController,
-                      validator: (value) {
-                        if (value == null || value.isEmpty) {
-                          return 'Email is required';
-                        }
-                        if (!RegExp(
-                          r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$',
-                        ).hasMatch(value)) {
-                          return 'Please enter a valid email address';
-                        }
-                        return null;
-                      },
-                    ),
-                    MyTextField(
-                      text: 'Phone Number',
-                      controller: widget.phoneController,
-                      validator: (value) {
-                        if (value == null || value.isEmpty) {
-                          return 'Phone number is required';
-                        }
-                        // Remove non-digits for validation
-                        final digitsOnly = value.replaceAll(RegExp(r'\D'), '');
-                        if (digitsOnly.length < 10) {
-                          return 'Phone number must be at least 10 digits';
-                        }
-                        if (!RegExp(r'^[\d\s\-+()]{10,}$').hasMatch(value)) {
-                          return 'Please enter a valid phone number';
-                        }
-                        return null;
-                      },
-                    ),
-                  ],
-                ),
-                const SizedBox(height: 20.0),
-                MyTextField(
-                  text: 'Message',
-                  controller: widget.messageController,
-                  minLines: 6,
-                  width: 950,
-                  validator: (value) {
-                    if (value == null || value.isEmpty) {
-                      return 'Message is required';
-                    }
-                    if (value.length < 10) {
-                      return 'Message must be at least 10 characters';
-                    }
-                    if (value.length > 500) {
-                      return 'Message must be less than 500 characters';
-                    }
-                    return null;
-                  },
-                ),
-                const SizedBox(height: 20.0),
-                Center(
-                  child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.tealAccent,
-                      minimumSize: const Size(200, 50),
-                    ),
-                    onPressed: () {
-                      // You'll need to trigger validation here
-                      // If using Form widget, call _formKey.currentState!.validate()
-                    },
-                    child: Sansbold(text: 'Submit', size: 20),
+            child: Form(
+              key: _formKey,
+              child: Column(
+                children: [
+                  const SizedBox(height: 30.0),
+                  Sansbold(text: 'Contact Me', size: 40),
+                  const SizedBox(height: 20.0),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      MyTextField(
+                        text: 'First Name',
+                        controller: widget.firstNameController,
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'First name is required';
+                          }
+                          if (value.length < 2) {
+                            return 'First name must be at least 2 characters';
+                          }
+                          if (!RegExp(r'^[a-zA-Z\s]+$').hasMatch(value)) {
+                            return 'Only letters and spaces allowed';
+                          }
+                          return null;
+                        },
+                      ),
+                      MyTextField(
+                        text: 'Last Name',
+                        controller: widget.lastNameController,
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'Last name is required';
+                          }
+                          if (value.length < 2) {
+                            return 'Last name must be at least 2 characters';
+                          }
+                          if (!RegExp(r'^[a-zA-Z\s]+$').hasMatch(value)) {
+                            return 'Only letters and spaces allowed';
+                          }
+                          return null;
+                        },
+                      ),
+                    ],
                   ),
-                ),
-              ],
+                  const SizedBox(height: 20.0),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      MyTextField(
+                        text: 'Email',
+                        controller: widget.emailController,
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'Email is required';
+                          }
+                          if (!RegExp(
+                            r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$',
+                          ).hasMatch(value)) {
+                            return 'Please enter a valid email address';
+                          }
+                          return null;
+                        },
+                      ),
+                      MyTextField(
+                        text: 'Phone Number',
+                        controller: widget.phoneController,
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'Phone number is required';
+                          }
+                          // Remove non-digits for validation
+                          final digitsOnly = value.replaceAll(
+                            RegExp(r'\D'),
+                            '',
+                          );
+                          if (digitsOnly.length < 10) {
+                            return 'Phone number must be at least 10 digits';
+                          }
+                          if (!RegExp(r'^[\d\s\-+()]{10,}$').hasMatch(value)) {
+                            return 'Please enter a valid phone number';
+                          }
+                          return null;
+                        },
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 20.0),
+                  MyTextField(
+                    text: 'Message',
+                    controller: widget.messageController,
+                    minLines: 6,
+                    width: 950,
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Message is required';
+                      }
+                      if (value.length < 10) {
+                        return 'Message must be at least 10 characters';
+                      }
+                      if (value.length > 500) {
+                        return 'Message must be less than 500 characters';
+                      }
+                      return null;
+                    },
+                  ),
+                  const SizedBox(height: 20.0),
+                  Center(
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.tealAccent,
+                        minimumSize: const Size(200, 50),
+                      ),
+                      onPressed: () async {
+                        // You'll need to trigger validation here
+                        // If using Form widget, call
+                        bool isValid = _formKey.currentState!.validate();
+                        if (isValid) {
+                          // Form is valid, process submission
+                          final formData = {
+                            'firstName': widget.firstNameController.text,
+                            'lastName': widget.lastNameController.text,
+                            'email': widget.emailController.text,
+                            'phone': widget.phoneController.text,
+                            'message': widget.messageController.text,
+                          };
+                          debugPrint('Form submitted: $formData');
+                          await addData.addData(
+                            name: widget.firstNameController.text,
+                            email: widget.lastNameController.text,
+                            message: widget.messageController.text,
+                            lastName: widget.lastNameController.text,
+                            phone: widget.phoneController.text,
+                            context: context,
+                          );
+                          // Clear form after submission
+                          // _formKey.currentState?.reset();
+                          widget.firstNameController.clear();
+                          widget.lastNameController.clear();
+                          widget.emailController.clear();
+                          widget.phoneController.clear();
+                          widget.messageController.clear();
+
+                          // Reset form to remove validation errors
+                          _formKey.currentState?.reset();
+
+                          // Mark fields as untouched to prevent immediate validation
+                          _formKey.currentState?.save();
+                        }
+                      },
+                      child: Sansbold(text: 'Submit', size: 20),
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
         ],

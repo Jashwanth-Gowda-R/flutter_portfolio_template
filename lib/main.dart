@@ -5,11 +5,11 @@ import 'package:url_strategy/url_strategy.dart';
 import 'package:my_portfolio_app/firebase_options.dart';
 import 'package:my_portfolio_app/routes/routes.dart';
 
-
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   setPathUrlStrategy();
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+
   runApp(const MyApp());
 }
 
