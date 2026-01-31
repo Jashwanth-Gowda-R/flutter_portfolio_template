@@ -3,11 +3,9 @@ import 'package:my_portfolio_app/contact_responsive_page.dart';
 import 'package:my_portfolio_app/landing_responsive_screen.dart';
 import 'package:my_portfolio_app/mobile/about_me_mobile.dart';
 import 'package:my_portfolio_app/mobile/blog_mobile.dart';
-import 'package:my_portfolio_app/mobile/contact_me_mobile.dart';
 import 'package:my_portfolio_app/mobile/work_page_mobile.dart';
 import 'package:my_portfolio_app/web/about_me_web.dart';
 import 'package:my_portfolio_app/web/blog_web.dart';
-import 'package:my_portfolio_app/web/contact_me_web.dart';
 import 'package:my_portfolio_app/web/works_page_web.dart';
 
 class Routes {

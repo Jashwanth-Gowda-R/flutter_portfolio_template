@@ -340,7 +340,7 @@ class ContactMeWeb extends StatelessWidget {
         headerSliverBuilder: (context, bool innerBoxIsScrolled) {
           return [
             SliverAppBar(
-              automaticallyImplyLeading: false,
+              // automaticallyImplyLeading: false,
               backgroundColor: Colors.white,
               iconTheme: IconThemeData(color: Colors.black, size: 25),
               expandedHeight: 300.0,
@@ -360,15 +360,19 @@ class ContactMeWeb extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Spacer(flex: 3),
-                  TabsWeb(title: 'Home', route: '/'),
+                  TabsWeb(title: 'Home', route: '/', color: Colors.white),
                   Spacer(),
-                  TabsWeb(title: 'Works', route: '/works'),
+                  TabsWeb(title: 'Works', route: '/works', color: Colors.white),
                   Spacer(),
-                  TabsWeb(title: 'Blogs', route: '/blog'),
+                  TabsWeb(title: 'Blogs', route: '/blog', color: Colors.white),
                   Spacer(),
-                  TabsWeb(title: 'About', route: '/about'),
+                  TabsWeb(title: 'About', route: '/about', color: Colors.white),
                   Spacer(),
-                  TabsWeb(title: 'Contact', route: '/contact'),
+                  TabsWeb(
+                    title: 'Contact',
+                    route: '/contact',
+                    color: Colors.white,
+                  ),
                   Spacer(),
                 ],
               ),

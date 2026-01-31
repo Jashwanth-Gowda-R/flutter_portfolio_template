@@ -26,15 +26,15 @@ class _AboutMeWebState extends State<AboutMeWeb> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Spacer(flex: 3),
-            TabsWeb(title: 'Home', route: '/'),
+            TabsWeb(title: 'Home', route: '/', color: Colors.black),
             Spacer(),
-            TabsWeb(title: 'Works', route: '/works'),
+            TabsWeb(title: 'Works', route: '/works', color: Colors.black),
             Spacer(),
-            TabsWeb(title: 'Blogs', route: '/blog'),
+            TabsWeb(title: 'Blogs', route: '/blog', color: Colors.black),
             Spacer(),
-            TabsWeb(title: 'About', route: '/about'),
+            TabsWeb(title: 'About', route: '/about', color: Colors.black),
             Spacer(),
-            TabsWeb(title: 'Contact', route: '/contact'),
+            TabsWeb(title: 'Contact', route: '/contact', color: Colors.black),
             Spacer(),
           ],
         ),
@@ -214,4 +214,3 @@ class _AboutMeWebState extends State<AboutMeWeb> {
     );
   }
 }
-
